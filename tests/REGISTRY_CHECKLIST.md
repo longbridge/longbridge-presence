@@ -22,7 +22,7 @@
 |---|----------|------|----------|----------|--------------|
 | 1 | Official MCP Registry | https://registry.modelcontextprotocol.io/v0/servers/com.longbridge%2Fmcp/versions | CLI：`mcp-publisher publish`（DNS Ed25519 验证 + `server.json`，当前仅 remotes，packages 待下版本补 Dockerfile label） | 已上线 | ✅ |
 | 2 | ~~modelcontextprotocol/servers README~~ | https://github.com/modelcontextprotocol/servers | 官方 CONTRIBUTING 明示：第三方名单已下线，统一用 Tier 1 #1。本项与 #1 重复。 | 不适用 | - |
-| 3 | GitHub MCP Registry | https://github.com/mcp | 邮件发 `partnerships@github.com`（2026-04-23 发出，GitHub 工单 #143845，2026-04-24 确认受理）；2026-06-09 再次跟进询问所需调整 | 审核中 | - |
+| 3 | GitHub MCP Registry | https://github.com/mcp/com.longbridge/mcp | 邮件发 `partnerships@github.com`（2026-04-23 发出，GitHub 工单 #143845，2026-04-24 确认受理）；2026-06-24 审核通过上线 | 已上线 | ✅ |
 
 ## Tier 2 — 主流第三方市场（大流量）
 
@@ -58,7 +58,7 @@
 | 21 | Windsurf / Codeium Cascade | https://www.windsurf.com | 支持 MCP，有内置 Marketplace，但为内部策展无公开提交入口；需联系 Codeium 合作或通过 Discord 申请 | 待手动 | - |
 | 22 | Zed Extensions | https://github.com/zed-industries/extensions | Marketplace 需跨平台预编译二进制（CI 暂未支持）；用户现可直接在 settings 配置 `"context_servers":{"longbridge-mcp":{"url":"https://mcp.longbridge.com"}}`；正式提交待 CI 加跨平台编译 | 待 CI 支持 | - |
 | 23 | Claude Desktop Extensions | — | 通过 Tier 1 #1 官方 registry 自动拉取；无单独提交入口 | 未开始 | - |
-| 24 | VS Code MCP (GitHub Copilot) | https://github.com/mcp | 与 Tier 1 #3 同源 | 未开始 | - |
+| 24 | VS Code MCP (GitHub Copilot) | https://github.com/mcp/com.longbridge/mcp | 与 Tier 1 #3 同源 | 未开始 | - |
 | 25 | JetBrains AI Assistant | https://www.jetbrains.com/help/ai-assistant/configure-an-mcp-server.html | v2025.2 起内置支持 MCP，无官方注册入口；用户在 Settings → AI Assistant → MCP → Add 直接添加 URL 即可，无需提交 | 不适用（无注册入口） | - |
 
 ## Tier 5 — Awesome 清单 & 社区策展
