@@ -30,7 +30,7 @@
 |---|----------|------|----------|----------|--------------|
 | 4 | Smithery | https://smithery.ai/servers/longbridge-official/longbridge-mcp | 通过 `/.well-known/mcp/server-card.json` 跳过 scan；2026-04-27 上线，108 tools / 1 connection。`longbridge` namespace 申诉仍在排队 | 已上线 | ✅ |
 | 5 | mcp.so | https://mcp.so/server/longbridge/longbridge | 网页 Submit（2026-04-24）+ GitHub issue `chatmcp/mcpso#2151` 备份 | 已上线 | ✅ |
-| 6 | Glama | https://glama.ai/mcp/servers/longbridge/longbridge-mcp | 双源完整收录：`/connectors/com.longbridge/mcp`（registry 同步）+ `/servers/longbridge/longbridge-mcp`（GitHub 爬虫，含 score badge） | 已上线 | ✅ |
+| 6 | Glama | https://glama.ai/api/mcp/v1/servers/longbridge/longbridge-mcp | 双源完整收录：`/connectors/com.longbridge/mcp`（registry 同步）+ `/servers/longbridge/longbridge-mcp`（GitHub 爬虫，含 score badge） | 已上线 | ✅ |
 | 7 | PulseMCP | https://www.pulsemcp.com/servers/longbridge | 从 Tier 1 #1 自动同步，2026-04-27 上线（提前于 ~2026-05-01 预期） | 已上线 | ✅ |
 | 8 | MCP Market | https://mcpmarket.com/server/longbridge-1 | 由 Cline 运营，与 #18 同入口；上线时 slug 被占为 `longbridge-1`，已在 #1406 评论请求改为 `longbridge-mcp`（2026-04-24） | 已上线（slug 待改名） | ✅ |
 | 9 | LobeHub MCP | https://lobehub.com/mcp | 网页 submit 弹窗反复 "Failed to submit MCP plugin"，改走 GitHub issue `lobehub/lobehub#14133`（2026-04-24），2026-05-14 merged | 已上线 | ✅ |
