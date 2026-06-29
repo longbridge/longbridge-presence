@@ -7,7 +7,7 @@ on:
   workflow_dispatch:   # allow manual trigger from GitHub UI
 
 permissions:
-  contents: write
+  contents: read
   issues: write
 
 jobs:
@@ -21,10 +21,13 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install dependencies
+        run: pip install requests
+
       - name: Run registry health check
         id: registry
         run: python scripts/check_registries.py
-        continue-on-error: true   # don't fail the job; we open an issue instead
+        continue-on-error: true
 
       - name: Run sponsor check
         id: sponsor
@@ -34,14 +37,14 @@ jobs:
       - name: Generate homepage
         run: python scripts/generate_homepage.py
 
-      - name: Commit reports and homepage
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add tests/reports/ docs/index.html
-          git diff --staged --quiet && echo "Nothing to commit" || \
-            git commit -m "chore: registry health check $(date -u +%Y-%m-%d)" && \
-            git push
+      - name: Upload reports as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: health-check-${{ github.run_id }}
+          path: |
+            tests/reports/
+            docs/index.html
+          retention-days: 30
 
       - name: Open issue on failures
         if: steps.registry.outcome == 'failure'
@@ -57,6 +60,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: `🚨 Registry health check: failures detected (${today})`,
-              body: `## Summary\n\nSome registry URLs returned ❌ or ⚠️. See details below.\n\n<details><summary>Report</summary>\n\n\`\`\`\n${report}\n\`\`\`\n\n</details>\n\n[View full report](https://github.com/${context.repo.owner}/${context.repo.repo}/blob/main/tests/reports/registry-${today}.md)`,
+              body: `## Summary\n\nSome registry URLs returned ❌ or ⚠️. See details below.\n\n<details><summary>Report</summary>\n\n\`\`\`\n${report}\n\`\`\`\n\n</details>\n\nDownload full report from the [workflow artifacts](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}).`,
               labels: ['monitoring', 'registry'],
             });
