@@ -2,8 +2,8 @@ name: Registry Health Check
 
 on:
   schedule:
-    # Every Monday at 02:00 UTC
-    - cron: '0 2 * * 1'
+    # Every day at 02:00 UTC
+    - cron: '0 2 * * *'
   workflow_dispatch:   # allow manual trigger from GitHub UI
 
 permissions:
