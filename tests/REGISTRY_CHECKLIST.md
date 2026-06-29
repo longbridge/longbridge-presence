@@ -20,7 +20,7 @@
 
 | # | 网站名称 | 地址 | 提交方式 | 提交状态 | 是否提交成功 |
 |---|----------|------|----------|----------|--------------|
-| 1 | Official MCP Registry | https://registry.modelcontextprotocol.io/v0/servers/com.longbridge%2Fmcp | CLI：`mcp-publisher publish`（DNS Ed25519 验证 + `server.json`，当前仅 remotes，packages 待下版本补 Dockerfile label） | 已上线 | ✅ |
+| 1 | Official MCP Registry | https://registry.modelcontextprotocol.io/v0/servers/com.longbridge%2Fmcp/versions | CLI：`mcp-publisher publish`（DNS Ed25519 验证 + `server.json`，当前仅 remotes，packages 待下版本补 Dockerfile label） | 已上线 | ✅ |
 | 2 | ~~modelcontextprotocol/servers README~~ | https://github.com/modelcontextprotocol/servers | 官方 CONTRIBUTING 明示：第三方名单已下线，统一用 Tier 1 #1。本项与 #1 重复。 | 不适用 | - |
 | 3 | GitHub MCP Registry | https://github.com/mcp | 邮件发 `partnerships@github.com`（2026-04-23 发出，GitHub 工单 #143845，2026-04-24 确认受理）；2026-06-09 再次跟进询问所需调整 | 审核中 | - |
 
