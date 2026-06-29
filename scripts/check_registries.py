@@ -23,6 +23,14 @@ except ImportError:
 
 KEYWORDS = ["longbridge", "长桥", "longbridge-mcp", "com.longbridge"]
 TIMEOUT = 15
+
+# Sites that block all automated requests (JS challenge / bot protection).
+# These are verified manually and skipped in automated checks.
+MANUAL_CHECK_DOMAINS = [
+    "mcpmarket.com",   # Vercel Security Checkpoint, JS challenge required
+    "cursor.directory", # JS-rendered, blocks bots
+    "lobehub.com",      # JS-rendered, blocks bots
+]
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
@@ -141,6 +149,16 @@ def main():
     ok = warn = fail = 0
     for i, entry in enumerate(all_entries, 1):
         print(f"  [{i}/{total}] {entry['url'][:80]}", end=" ", flush=True)
+        # Skip sites that require JS challenge — mark as manual
+        domain = entry["url"].split("/")[2] if "/" in entry["url"] else ""
+        if any(d in domain for d in MANUAL_CHECK_DOMAINS):
+            icon = "🔧"
+            entry.update({"reachable": None, "has_keyword": None,
+                          "status_code": None, "error": "manual check required"})
+            entry["icon"] = icon
+            print(icon, "(manual)")
+            rows.append(entry)
+            continue
         r = check_url(entry["url"])
         icon = status_icon(r)
         print(icon)
@@ -151,6 +169,8 @@ def main():
             ok += 1
         elif icon == "⚠️":
             warn += 1
+        elif icon == "🔧":
+            pass  # manual, not counted as failure
         else:
             fail += 1
 
