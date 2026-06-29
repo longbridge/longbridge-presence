@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+tests/reports/*.json
+tests/reports/*.md
+!tests/reports/.gitkeep
